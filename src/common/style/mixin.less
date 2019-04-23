@@ -1,0 +1,201 @@
+@import './base.less';
+//圆角
+.borderRadius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-1px(@position: bottom, @color: #ddd) when (@position =top) {
+  position: relative;
+
+  &:after {
+    content: '';
+    pointer-events: none; //解决iphone上的点击无效Bug
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    border: 1px solid @color;
+  }
+}
+
+//1px底部边框
+.border-1px(@position: bottom, @color: #ddd) when (@position =bottom) {
+  position: relative;
+
+  &:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+    content: '';
+  }
+}
+
+
+//定位上下左右居中
+.center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+.ct() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+.cl() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//定位全屏
+.allcover() {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+//宽高
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+//字体大小、行高、字体
+.font(@size: 14px, @line-height: 1.5, @family: 'Microsoft YaHei') {
+  font: @size @line-height @family;
+}
+
+//字体大小，颜色
+.sc(@size: 14px, @color: #333) {
+  font-size: @size;
+  color: @color;
+}
+
+.boxSizing() {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ellipsis(@line) when(@line=1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis(@line) when(@line=2) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+
+//flex 布局和 子元素 对其方式
+.flex(@type: space-between) {
+  display: -webkit-box;
+  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box;
+  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;
+  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;
+  /* 新版本语法： Chrome 21+ */
+  display: flex;
+  /* 新版本语法： Opera 12.1, Firefox 22+ */
+
+  justify-content: @type;
+}
+
+.flex_direction(@direction: x, @type: space-between) when (@direction =x) {
+  .flex(@type);
+  flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+}
+
+.flex_direction(@direction: x, @type: space-between) when (@direction =y) {
+  .flex(@type);
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+}
+.flex_num(@num: 0) {
+  flex: @num;
+  -webkit-flex: @num;
+  -ms-flex: @num;
+  -moz-box-flex: @num;
+}
+
+.flex_wrap(@type: wrap) {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -moz-box-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+}
+
+
+.vertical_horizontal_center(@direction) when(@direction =vertical) {
+  .flex();
+  /*垂直居中*/
+  -webkit-box-align: center;
+  /*老版本语法*/
+  -moz-box-align: center;
+  /*混合版本语法*/
+  -ms-flex-align: center;
+  /*新版本语法*/
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.vertical_horizontal_center(@direction) when(@direction =horizontal) {
+  .flex();
+  /*水平居中*/
+  -webkit-box-pack: center;
+  /*!*老版本语法*!*/
+  -moz-box-pack: center;
+  /*!*混合版本语法*!*/
+  -ms-flex-pack: center;
+  /*!*新版本语法*!*/
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.vertical_horizontal_center(@direction) when(@direction = center) {
+  .flex();
+  /*垂直居中*/
+  -webkit-box-align: center;
+  /*老版本语法*/
+  -moz-box-align: center;
+  /*混合版本语法*/
+  -ms-flex-align: center;
+  /*新版本语法*/
+  -webkit-align-items: center;
+  align-items: center;
+  /*水平居中*/
+  -webkit-box-pack: center;
+  /*!*老版本语法*!*/
+  -moz-box-pack: center;
+  /*!*混合版本语法*!*/
+  -ms-flex-pack: center;
+  /*!*新版本语法*!*/
+  -webkit-justify-content: center;
+  justify-content: center;
+}

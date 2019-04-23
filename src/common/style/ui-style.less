@@ -1,0 +1,69 @@
+.jinfu {
+    @mainColor:#B48856;
+
+    @bgColor:#f8f8f8;
+    @subBgColor:#fcfcfc;
+    @minorBgColor:#EFEFEF;
+    @boxBgColor:#ffffff;
+
+    @lineColor:#fcfcfc;
+
+    @btnlineColor:#ccc;
+    @btnlineActiveColor:#666;
+
+    @btnColor:#B48856;
+    @btnActiveColor:#A37C4E;
+    @btnDisabledColor:#CCC;
+
+    @fontColor:#333;
+    @subFontColor:#666;
+    @minorFontColor:#999;
+    @tipsFontColor:#ccc;
+
+    .mainColor{
+        color: @mainColor;
+    }
+
+    .taglineColor{
+        border: 1px solid @mainColor;
+    }
+
+    .bg{
+        background-color: @bgColor;
+    }
+    .subBg{
+        background-color: @subBgColor;
+    }
+    .minorBg{
+        background-color: @minorBgColor;
+    }
+    .boxBg{
+        background-color: @boxBgColor;
+    }
+
+    .title{
+        color: @fontColor;
+    }
+    .description{
+        color: @fontColor;
+    }
+
+    .btn{
+        background-color: @btnColor;
+    }
+    .btn:active {
+        background-color: @btnActiveColor;
+    }
+    .btn[disabled]{
+        background-color: @btnDisabledColor;
+    }
+
+    .btnline{
+        border: 1px solid @btnlineColor;
+    }
+
+    .btnline:active{
+        border: 1px solid @btnlineActiveColor;
+    }
+
+}
